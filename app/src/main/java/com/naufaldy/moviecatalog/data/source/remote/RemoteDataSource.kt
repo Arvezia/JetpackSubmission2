@@ -31,13 +31,13 @@ class RemoteDataSource {
             EspressoIdlingResources.decrement()
         }
     }
-   suspend fun getMovieDetail(callback: LoadMovieDetail, movieId: Int){
+   suspend fun getMovieDetail(movieId: Int, callback: LoadMovieDetail){
         EspressoIdlingResources.increment()
         ApiConfig.instance.getDetailMovie(movieId).await().let { movieDetail -> callback.movieDetailReceived(movieDetail)
             EspressoIdlingResources.decrement()
         }
     }
-   suspend fun getTVDetail(callback: LoadTVDetail, tvId: Int){
+   suspend fun getTVDetail(tvId: Int, callback: LoadTVDetail){
         EspressoIdlingResources.increment()
         ApiConfig.instance.getDetailTvShow(tvId).await().let { tvDetail -> callback.tvDetailReceived(tvDetail)
             EspressoIdlingResources.decrement()

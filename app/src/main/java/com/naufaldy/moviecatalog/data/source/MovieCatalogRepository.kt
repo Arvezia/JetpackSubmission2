@@ -17,7 +17,7 @@ class MovieCatalogRepository private constructor(private val remoteDataSource: R
 
     companion object{
         @Volatile
-        private var instance: MovieCatalogRepository? null
+        private var instance: MovieCatalogRepository? = null
 
         fun getInstance(remoteData: RemoteDataSource): MovieCatalogRepository =
             instance ?: synchronized(this){
@@ -72,7 +72,7 @@ class MovieCatalogRepository private constructor(private val remoteDataSource: R
     override fun getMovieDetail(movieId: Int): LiveData<MovieEntity> {
         val movieDetailResult = MutableLiveData<MovieEntity>()
         CoroutineScope(Dispatchers.IO).launch {
-            remoteDataSource.getMovieDetail(object : RemoteDataSource.LoadMovieDetail{
+            remoteDataSource.getMovieDetail(movieId,object : RemoteDataSource.LoadMovieDetail{
                 override fun movieDetailReceived(movieResponse: MovieResponse) {
                     val movieDetail = MovieEntity(
                         movieResponse.id,
@@ -90,7 +90,7 @@ class MovieCatalogRepository private constructor(private val remoteDataSource: R
     override fun getTVDetail(tvId: Int): LiveData<TvEntity> {
         val tvDetailResult = MutableLiveData<TvEntity>()
         CoroutineScope(Dispatchers.IO).launch {
-            remoteDataSource.getTVDetail(object: RemoteDataSource.LoadTVDetail{
+            remoteDataSource.getTVDetail(tvId,object: RemoteDataSource.LoadTVDetail{
                 override fun tvDetailReceived(tvShowsResponse: TVShowsResponse) {
                     val tvDetail = TvEntity(
                         tvShowsResponse.id,

@@ -11,6 +11,7 @@ import com.naufaldy.moviecatalog.entity.MovieEntity
 import com.naufaldy.moviecatalog.entity.TvEntity
 import com.naufaldy.moviecatalog.viewmodel.MovieDetailViewModel
 import com.naufaldy.moviecatalog.viewmodel.TVDetailViewModel
+import com.naufaldy.moviecatalog.viewmodel.ViewModelFactory
 
 class TVDetailActivity : AppCompatActivity() {
     companion object{
@@ -22,11 +23,12 @@ class TVDetailActivity : AppCompatActivity() {
         binding = ActivityTvDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[TVDetailViewModel::class.java]
+        val factory = ViewModelFactory.getInstance(this)
+        val viewModel = ViewModelProvider(this, factory)[TVDetailViewModel::class.java]
 
         val extras =intent.extras
         if(extras != null){
-            val tvId = extras.getInt(TVDetailActivity.EXTRA_TV)
+            val tvId = extras.getInt(TVDetailViewModel.EXTRA_TV)
             if (tvId != null){
                 viewModel.selectedTVShows(tvId)
                 gettv(viewModel.getTVDetail() as TvEntity)

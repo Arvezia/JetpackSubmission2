@@ -1,5 +1,6 @@
 package com.naufaldy.moviecatalog.home
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,6 +14,7 @@ import com.naufaldy.moviecatalog.R
 import com.naufaldy.moviecatalog.adapter.MovieAdapter
 import com.naufaldy.moviecatalog.databinding.FragmentMovieBinding
 import com.naufaldy.moviecatalog.databinding.MovieListMenuBinding
+import com.naufaldy.moviecatalog.detail.MovieDetailActivity
 import com.naufaldy.moviecatalog.viewmodel.MovieViewModel
 import com.naufaldy.moviecatalog.viewmodel.ViewModelFactory
 
@@ -46,6 +48,11 @@ class MovieFragment : Fragment() {
                 adapter = movieAdapter
             }
         }
+    }
+    override fun onItemClicked(id: Int){
+        val intent = Intent(context,MovieDetailActivity::class.java)
+        intent.putExtra(MovieDetailActivity.EXTRA_MOVIE, id)
+        context?.startActivities(intent)
     }
 
 
