@@ -13,5 +13,5 @@ class TVDetailViewModel(private val movieCatalogRepository: MovieCatalogReposito
         this.tvId = tvId
     }
 
-    fun getTVDetail(tvId: Int): LiveData<TvEntity> = movieCatalogRepository.getTVDetail(tvId)
+    fun getTVDetail(): LiveData<TvEntity> = movieCatalogRepository.getTVDetail(tvId)
 }

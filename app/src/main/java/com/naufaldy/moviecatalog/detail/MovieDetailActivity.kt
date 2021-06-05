@@ -24,7 +24,7 @@ class MovieDetailActivity : AppCompatActivity() {
         binding = ActivityMovieDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //val adapter = MovieAdapter()
+        val adapter = MovieAdapter()
         val factory = ViewModelFactory.getInstance(this)
         val viewModel = ViewModelProvider(this, factory)[MovieDetailViewModel::class.java]
 

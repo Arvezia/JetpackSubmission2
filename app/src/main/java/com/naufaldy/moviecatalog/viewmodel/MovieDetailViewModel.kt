@@ -13,5 +13,5 @@ class MovieDetailViewModel(private val movieCatalogRepository: MovieCatalogRepos
   this.movieId = movieId
  }
 
- fun getMovieDetail(movieId: Int): LiveData<MovieEntity> =movieCatalogRepository.getMovieDetail(movieId)
+ fun getMovieDetail(): LiveData<MovieEntity> =movieCatalogRepository.getMovieDetail(movieId)
 }
