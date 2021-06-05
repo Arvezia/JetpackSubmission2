@@ -49,11 +49,11 @@ class MovieFragment : Fragment() {
             }
         }
     }
-    override fun onItemClicked(id: Int){
+/*    override fun onItemClicked(id: Int){
         val intent = Intent(context,MovieDetailActivity::class.java)
         intent.putExtra(MovieDetailActivity.EXTRA_MOVIE, id)
         context?.startActivities(intent)
-    }
+    }*/
 
 
 }

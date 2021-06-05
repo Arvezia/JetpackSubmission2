@@ -45,6 +45,6 @@ class TVFragment : Fragment() {
             }
         }
     }
-    override fun OnItemClicked
+    /*override fun OnItemClicked*/
 
 }
